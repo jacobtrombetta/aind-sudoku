@@ -1,5 +1,6 @@
 assignments = []
 
+# Code already implementated by Udacity
 def assign_value(values, box, value):
     """
     Please use this function to update your values dictionary!
@@ -39,11 +40,13 @@ def naked_twins(values):
     return values
 
 
+# Code ported from Udacity's implementation
 def cross(A, B):
     "Cross product of elements in A and elements in B."
     return [a+b for a in A for b in B]
 
 
+# Code ported from Udacity's implementation
 def grid_values(grid):
     """
     Convert grid into a dict of {square: char} with '123456789' for empties.
@@ -66,6 +69,7 @@ def grid_values(grid):
     return grid_dict
 
 
+# Code ported from Udacity's implementation
 def display(values):
     """
     Display the values as a 2-D grid.
@@ -80,6 +84,7 @@ def display(values):
     print
 
 
+# Code inspired by Udacity's implementation
 def eliminate(values):
     for box in boxes:
         if len(values[box]) == 1:
@@ -88,6 +93,7 @@ def eliminate(values):
     return values
 
 
+# Code ported from Udacity's implementation
 def only_choice(values):
     for unit in unitlist:
         for digit in '123456789':
@@ -97,6 +103,7 @@ def only_choice(values):
     return values
 
 
+# Code ported from Udacity's implementation
 def reduce_puzzle(values):
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     stalled = False
@@ -111,6 +118,7 @@ def reduce_puzzle(values):
     return values
 
 
+# Code ported from Udacity's implementation
 def search(values):
     values = reduce_puzzle(values)
     if values is False:
@@ -141,6 +149,7 @@ def solve(grid):
 
 
 # Initalize all the variables used for solving the sudoku puzzle.
+# Variable instantiation inspired by Udacity's implementation.
 rows = 'ABCDEFGHI'
 columns = '123456789'
 boxes = cross(rows, columns)
