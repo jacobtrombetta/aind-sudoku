@@ -46,7 +46,7 @@ def cross(A, B):
     return [a+b for a in A for b in B]
 
 
-# Code ported from Udacity's implementation
+# Code inspired by Udacity's implementation
 def grid_values(grid):
     """
     Convert grid into a dict of {square: char} with '123456789' for empties.
