@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: *Student should provide answer here*
+A: Finding naked twins on the sudoku board allows the algorithm to impose extra constrains on the space.  The constraints imposed on the rows, columns, and units in the normal elimination and search algorithms just take boxes with singular entries into account.  Finding a naked twin allows us to make additional constraints on entries in their related peer group.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: *Student should provide answer here*
+A: We use constraint propagation in the diagonal case by adding additional peers to the diagonal entire's peer group. This allows the algorithm to eliminate additional values based on singular diagonal entries.
 
 ### Install
 
