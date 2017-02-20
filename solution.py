@@ -26,6 +26,8 @@ def naked_twins(values):
     naked_twin_pairs = [[twin, peer] for twin in naked_twin_list for peer in peers[twin] if values[twin] == values[peer]]
     naked_twin_pairs = set(tuple(sorted(permutation)) for permutation in naked_twin_pairs )
     
+    # Go through each unit to see if a naked twin pair share a square, column, or row.
+    # Remove any duplicate characters from the naked twin pairs peer group.
     for unit in unitlist:
         for twin1, twin2 in naked_twin_pairs:
             if twin1 in unit and twin2 in unit:
@@ -160,6 +162,7 @@ unitlist = column_units + row_units + square_units
 units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
 peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 
+# To solve the diagonal sudoku, add diagonal entries to related peer groups.
 # Create diagonal peers.
 diagonal_boxes_negative_slope = [rows[k]+columns[k] for k in range(len(columns))]
 diagonal_boxes_positive_slope = [rows[k]+columns[len(columns)-k-1] for k in range(len(columns))]
