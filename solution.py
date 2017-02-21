@@ -44,7 +44,7 @@ def naked_twins(values):
 
 # Code ported from Udacity's implementation
 def cross(A, B):
-    "Cross product of elements in A and elements in B."
+    """Cross product of elements in A and elements in B."""
     return [a+b for a in A for b in B]
 
 
@@ -88,6 +88,13 @@ def display(values):
 
 # Code inspired by Udacity's implementation
 def eliminate(values):
+    """
+    Eliminates duplicate entries in the values dictionary peer group
+    Args:
+        values(dict): The sudoku in dictionary form
+    Returns:
+        values(dict): The sudoku in dictionary form with all duplicate entries removed
+    """
     for box in boxes:
         if len(values[box]) == 1:
             for peer_boxes in peers[box]:
@@ -97,6 +104,14 @@ def eliminate(values):
 
 # Code ported from Udacity's implementation
 def only_choice(values):
+    """
+    Eliminates unknown sudoku boxes in a unit if the value appears only once in the unit.
+    It is infact that unit's only choice for that number.
+    Args:
+        values(dict): The sudoku in dictionary form
+    Returns:
+        values(dict): The sudoku in dictionary form isolated unique entries in each unit
+    """
     for unit in unitlist:
         for digit in '123456789':
             dplaces = [box for box in unit if digit in values[box]]
@@ -107,6 +122,16 @@ def only_choice(values):
 
 # Code ported from Udacity's implementation
 def reduce_puzzle(values):
+    """
+    Reduce the sudoku puzzle using contraint propagation.
+    First, eliminate peers using singular soduku entries.
+    Next, find units with unique values in the unknown boxes with only_choice.
+    Finally, return as far as contraint propagation can take you.
+    Args:
+        values(dict): The sudoku in dictionary form
+    Returns:
+        values(dict): The sudoku in dictionary form as far as contrain propagation can be applied
+    """
     solved_values = [box for box in values.keys() if len(values[box]) == 1]
     stalled = False
     while not stalled:
@@ -122,6 +147,15 @@ def reduce_puzzle(values):
 
 # Code ported from Udacity's implementation
 def search(values):
+    """
+    First, apply contraint propagation to try to solve the puzzle with reduce_puzzle.
+    If that fails, use a depth-first search to solve different branches.
+    Repeat until you hopefully get an answer.
+    Args:
+        values(dict): The sudoku in dictionary form
+    Returns:
+        values(dict): The sudoku in dictionary form hopefully solved, returns False if not.
+        """
     values = reduce_puzzle(values)
     if values is False:
         return False ## Failed earlier

@@ -3,11 +3,14 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?  
-A: Finding naked twins on the sudoku board allows the algorithm to impose extra constrains on the space.  The constraints imposed on the rows, columns, and units in the normal elimination and search algorithms just take boxes with singular entries into account.  Finding a naked twin allows us to make additional constraints on entries in their related peer group.
+A: Finding naked twins on the sudoku board allows the algorithm to impose extra constrains on the space.  The constraints imposed on the rows, columns, and units in the normal elimination and search algorithms only take boxes with singular entries into account.  Finding a naked twin allows us to make additional constraints on entries in their related peer group. 
+
+If a row has two separate entries with the same two values, they are considered naked twins. This means the two values can only exist in the two entries.  For example, using 'A-I' to denote rows and '1-9' to denote columns, if boxes C1 and E1 both contain [2,6], if [2] eventually goes into C1, [6] must go into E1.  This is also true for the opposite case. With the naked twin constraint on entries C1 and E1, the values [2,6] can be eliminated from the rest of the entries in the top row: A1, B1, D1, F1, G1, H1, and I1.  This logic can be applied if the naked twins appear in a peer column or peer unit as well.
+    
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?  
-A: We use constraint propagation in the diagonal case by adding additional peers to the diagonal entire's peer group. This allows the algorithm to eliminate additional values based on singular diagonal entries.
+A: The diagonal sudoku case forces the player to adhere to the same '1-9' ordering rule used for columns, rows, and units, on the two main diagonals.  This rule adds six additional constraint possibilities for seventeen different entries.  So approximately 21% of the entiries have additional constrains for the elimination algorithm to propagate across the board.  This is very good news for the elimination algorithm because a singular entry in one of the diagonal boxes will impose its constraints further than in the non-diagonal sudoku case.
 
 ### Install
 
